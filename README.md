@@ -22,7 +22,8 @@ server {
                 }
                 access_log /var/log/nginx/clubhouse.log clubhouse;
                 echo_read_request_body;
-}```
+}
+```
 
 * Set up the ClubHouse webhook to post to the specific location.
 
