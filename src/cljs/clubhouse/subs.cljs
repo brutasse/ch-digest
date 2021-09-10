@@ -60,6 +60,19 @@
                  (:archived changes)
                  (:task_ids changes)
                  (:story_type changes)
+                 (:iteration_id changes)
+                 (:file_ids changes)
+                 (:object_story_link_ids changes)
+                 (:estimate changes)
+                 (:subject_story_link_ids changes)
+                 (:deadline changes)
+                 (:commit_ids changes)
+                 (:requested_by_id changes)
+                 (:blocker changes)
+                 (:pull_request_ids changes)
+                 (:position changes)
+                 (:external_links changes)
+                 (:group_id changes)
                  (:project_id changes)))
       (println "UNHANDLED CHANGE" (pr-str changes)))
 
@@ -75,6 +88,10 @@
   [db event data action]
   (assoc-in data [:comments (:id action)]
             (assoc action :created (:changed_at event))))
+
+(defmethod handle-action :story-comment-delete
+  [db event data action]
+  data)
 
 (defmethod handle-action :story-comment-update
   [db event data action]
@@ -104,6 +121,10 @@
   [db event data action]
   data)
 
+(defmethod handle-action :pull-request-update
+  [db event data action]
+  data)
+
 (defmethod handle-action :pull-request-comment
   [db event data action]
   data)
@@ -116,7 +137,39 @@
   [db event data action]
   data)
 
-(defmethod handle-action :foo-bar
+(defmethod handle-action :label-create
+  [db event data action]
+  data)
+
+(defmethod handle-action :story-link-create
+  [db event data action]
+  data)
+
+(defmethod handle-action :story-link-delete
+  [db event data action]
+  data)
+
+(defmethod handle-action :epic-comment-create
+  [db event data action]
+  data)
+
+(defmethod handle-action :epic-create
+  [db event data action]
+  data)
+
+(defmethod handle-action :epic-delete
+  [db event data action]
+  data)
+
+(defmethod handle-action :branch-push
+  [db event data action]
+  data)
+
+(defmethod handle-action :pull-request-open
+  [db event data action]
+  data)
+
+(defmethod handle-action :reaction-create
   [db event data action]
   data)
 
