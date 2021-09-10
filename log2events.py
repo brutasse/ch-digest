@@ -24,7 +24,8 @@ story_url = 'https://api.clubhouse.io/api/v2/stories/{id}'
 
 
 def ch_meta(events):
-    auth = {'token': TOKEN}
+    headers = {"Shortcut-Token": TOKEN,
+               "Clubhouse-Token": TOKEN}
 
     stories = {}
     for event in events:
@@ -35,7 +36,7 @@ def ch_meta(events):
             ):
                 print("Fetching story", action['id'])
                 response = requests.get(story_url.format(**action),
-                                        params=auth)
+                                        headers=headers)
                 if response.status_code == 200:
                     stories[action['id']] = response.json()
                 else:
@@ -43,13 +44,13 @@ def ch_meta(events):
 
     print("Fetching members")
     response = requests.get("https://api.clubhouse.io/api/v2/members",
-                            params=auth)
+                            headers=headers)
     response.raise_for_status()
     members = {m['id']: m for m in response.json()}
 
     print("Fetching projects")
     response = requests.get("https://api.clubhouse.io/api/v2/projects",
-                            params=auth)
+                            headers=headers)
     response.raise_for_status()
     projects = {p['id']: p for p in response.json()}
 
