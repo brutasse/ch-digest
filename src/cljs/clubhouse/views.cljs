@@ -79,8 +79,7 @@
     [sa/Container
      (for [[id stories] (sort-by (partial project-name metadata)
                                  (:projects state))
-           :let [project (get-in metadata [:projects (-> id str keyword)])]
-           :when project]
+           :let [project (get-in metadata [:projects (-> id str keyword)])]]
        ^{:key (str "project-" id)}
        [project-section project stories metadata])
      (when-not (:projects state)

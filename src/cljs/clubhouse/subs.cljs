@@ -73,6 +73,7 @@
                  (:position changes)
                  (:external_links changes)
                  (:group_id changes)
+                 (:custom_field_value_ids changes)
                  (:project_id changes)))
       (println "UNHANDLED CHANGE" (pr-str changes)))
 
