@@ -37,3 +37,12 @@ server {
   `log2events.py` requires the libraries defined in `requirements.txt`.
 
 * Serve `resources/public` over HTTP.
+
+
+### CLJS
+
+To update the in-repo build:
+
+```bash
+lein clean; lein cljsbuild once min
+```
